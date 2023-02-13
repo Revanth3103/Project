@@ -161,7 +161,7 @@ if page == "Application":
 
     st.title('Forecast application 🧙🏻')
     st.write('This app enables you to generate time series forecast withouth any dependencies.')
-    st.markdown("""The forecasting library used is **[Prophet](https://facebook.github.io/prophet/)**.""")
+   # st.markdown("""The forecasting library used is **[Prophet](https://facebook.github.io/prophet/)**.""")
     caching.clear_cache()
     df =  pd.DataFrame()   
 
@@ -177,9 +177,7 @@ if page == "Application":
         sample = st.checkbox("Download sample data from GitHub")
 
     try:
-        if sample:
-            st.markdown("""[download_link](https://gist.github.com/giandata/e0b5c2d2e71d4fd4388295eb5b71aeeb)""")    
-            
+      st.write("github data")
     except:
 
         if input:
@@ -243,7 +241,7 @@ if page == "Application":
 
         with st.beta_expander("Growth model"):
             st.write('Prophet uses by default a linear growth model.')
-            st.markdown("""For more information check the [documentation](https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth)""")
+            #st.markdown("""For more information check the [documentation](https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth)""")
 
             growth = st.radio(label='Growth model',options=['linear',"logistic"]) 
 
@@ -563,16 +561,3 @@ if page == "Application":
             else:
                 st.write("Generate a forecast to download.")
             
-
-if page == "About":
-    st.image("prophet.png")
-    st.header("About")
-    st.markdown("Official documentation of **[Facebook Prophet](https://facebook.github.io/prophet/)**")
-    st.markdown("Official documentation of **[Streamlit](https://docs.streamlit.io/en/stable/getting_started.html)**")
-    st.write("")
-    st.write("Author:")
-    st.markdown(""" **[Giancarlo Di Donato](https://www.linkedin.com/in/giancarlodidonato/)**""")
-    st.markdown("""**[Source code](https://github.com/giandata/forecast-app)**""")
-
-    st.write("Created on 27/02/2021")
-    st.write("Last updated: **29/04/2021**")
