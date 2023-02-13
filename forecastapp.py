@@ -28,8 +28,8 @@ st.set_page_config(page_title ="Forecast App",
                     page_icon="🔮")
 
 
-#tabs = ["Application","About"]
-#page = st.sidebar.radio("Tabs",tabs)
+tabs = ["Application","About"]
+page = st.sidebar.radio("Tabs",tabs)
 
 
 @st.cache(persist=False,
@@ -159,9 +159,9 @@ if page == "Application":
             if snippet == code_options[3]:
                 st.code(code4)
 
-    st.title('Sales Forecast🧙🏻')
-    st.write('This  enables you to generate time series forecast withouth any dependencies.')
-   # st.markdown("""The forecasting library used is **[Prophet](https://facebook.github.io/prophet/)**.""")
+    st.title('Forecast application 🧙🏻')
+    st.write('This app enables you to generate time series forecast withouth any dependencies.')
+    st.markdown("""The forecasting library used is **[Prophet](https://facebook.github.io/prophet/)**.""")
     caching.clear_cache()
     df =  pd.DataFrame()   
 
@@ -178,7 +178,7 @@ if page == "Application":
 
     try:
         if sample:
-           # st.markdown("""[download_link](https://gist.github.com/giandata/e0b5c2d2e71d4fd4388295eb5b71aeeb)""")    
+            st.markdown("""[download_link](https://gist.github.com/giandata/e0b5c2d2e71d4fd4388295eb5b71aeeb)""")    
             
     except:
 
@@ -231,7 +231,7 @@ if page == "Application":
             min_value = 1, max_value = 366,value=90)
 
         with st.beta_expander("Seasonality"):
-            #st.markdown("""The default seasonality used is additive, but the best choice depends on the specific case, therefore specific domain knowledge is required. For more informations visit the [documentation](https://facebook.github.io/prophet/docs/multiplicative_seasonality.html)""")
+            st.markdown("""The default seasonality used is additive, but the best choice depends on the specific case, therefore specific domain knowledge is required. For more informations visit the [documentation](https://facebook.github.io/prophet/docs/multiplicative_seasonality.html)""")
             seasonality = st.radio(label='Seasonality',options=['additive','multiplicative'])
 
         with st.beta_expander("Trend components"):
@@ -243,7 +243,7 @@ if page == "Application":
 
         with st.beta_expander("Growth model"):
             st.write('Prophet uses by default a linear growth model.')
-           # st.markdown("""For more information check the [documentation](https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth)""")
+            st.markdown("""For more information check the [documentation](https://facebook.github.io/prophet/docs/saturating_forecasts.html#forecasting-growth)""")
 
             growth = st.radio(label='Growth model',options=['linear',"logistic"]) 
 
@@ -331,7 +331,7 @@ if page == "Application":
             st.write("The seasonality change point controls the flexibility of the seasonality.")
             seasonality_scale= st.select_slider(label= 'Seasonality prior scale',options=seasonality_scale_values)    
 
-           # st.markdown("""For more information read the [documentation](https://facebook.github.io/prophet/docs/diagnostics.html#parallelizing-cross-validation)""")
+            st.markdown("""For more information read the [documentation](https://facebook.github.io/prophet/docs/diagnostics.html#parallelizing-cross-validation)""")
 
     with st.beta_container():
         st.subheader("3. Forecast 🔮")
@@ -415,7 +415,7 @@ if page == "Application":
             horizon = str(horizon) + " days"
 
             st.write(f"Here we do cross-validation to assess prediction performance on a horizon of **{horizon}** days, starting with **{initial}** days of training data in the first cutoff and then making predictions every **{period}**.")
-           # st.markdown("""For more information read the [documentation](https://facebook.github.io/prophet/docs/diagnostics.html#parallelizing-cross-validation)""")
+            st.markdown("""For more information read the [documentation](https://facebook.github.io/prophet/docs/diagnostics.html#parallelizing-cross-validation)""")
         
             
         with st.beta_expander("Metrics"):
@@ -461,7 +461,7 @@ if page == "Application":
 
         st.subheader('5. Hyperparameter Tuning 🧲')
         st.write("In this section it is possible to find the best combination of hyperparamenters.")
-        #st.markdown("""For more informations visit the [documentation](https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning)""")
+        st.markdown("""For more informations visit the [documentation](https://facebook.github.io/prophet/docs/diagnostics.html#hyperparameter-tuning)""")
 
         param_grid = {  
                             'changepoint_prior_scale': [0.01, 0.1, 0.5, 1.0],
@@ -564,15 +564,15 @@ if page == "Application":
                 st.write("Generate a forecast to download.")
             
 
-#if page == "About":
-    #st.image("prophet.png")
-    #st.header("About")
-   # st.markdown("Official documentation of **[Facebook Prophet](https://facebook.github.io/prophet/)**")
-   # st.markdown("Official documentation of **[Streamlit](https://docs.streamlit.io/en/stable/getting_started.html)**")
-    #st.write("")
-   # st.write("Author:")
-   # st.markdown(""" **[Giancarlo Di Donato](https://www.linkedin.com/in/giancarlodidonato/)**""")
-   # st.markdown("""**[Source code](https://github.com/giandata/forecast-app)**""")
+if page == "About":
+    st.image("prophet.png")
+    st.header("About")
+    st.markdown("Official documentation of **[Facebook Prophet](https://facebook.github.io/prophet/)**")
+    st.markdown("Official documentation of **[Streamlit](https://docs.streamlit.io/en/stable/getting_started.html)**")
+    st.write("")
+    st.write("Author:")
+    st.markdown(""" **[Giancarlo Di Donato](https://www.linkedin.com/in/giancarlodidonato/)**""")
+    st.markdown("""**[Source code](https://github.com/giandata/forecast-app)**""")
 
-   # st.write("Created on 27/02/2021")
-   # st.write("Last updated: **29/04/2021**")
+    st.write("Created on 27/02/2021")
+    st.write("Last updated: **29/04/2021**")
