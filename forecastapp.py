@@ -7,7 +7,7 @@ from prophet.diagnostics import cross_validation
 from prophet.plot import plot_cross_validation_metric
 import base64
 
-st.title('📈 Automated Time Series Forecasting')
+st.title('📈 Forecasting')
 
 df = st.file_uploader('Import the time series csv file here. Columns must be labeled ds and y. The input to Prophet is always a dataframe with two columns: ds and y. The ds (datestamp) column should be of a format expected by Pandas, ideally YYYY-MM-DD for a date or YYYY-MM-DD HH:MM:SS for a timestamp. The y column must be numeric, and represents the measurement we wish to forecast.', type='csv')
 
@@ -32,7 +32,7 @@ if df is not None:
 """
 ### Step 3: Visualize Forecast Data
 
-The below visual shows future predicted values. "yhat" is the predicted value, and the upper and lower limits are (by default) 80% confidence intervals.
+The below visual shows future predicted values. "yhat" is the predicted value, and the upper and lower limits are 80% confidence intervals.
 """
 if df is not None:
     future = m.make_future_dataframe(periods=periods_input)
@@ -50,7 +50,7 @@ if df is not None:
     st.write(fig1)
 
     """
-    The next few visuals show a high level trend of predicted values, day of week trends, and yearly trends (if dataset covers multiple years). The blue shaded area represents upper and lower confidence intervals.
+    The next few visuals show a high level trend of predicted values, day of week trends, and yearly trends.
     """
     fig2 = m.plot_components(forecast)
     st.write(fig2)
