@@ -8,14 +8,13 @@ from prophet.plot import plot_cross_validation_metric
 import base64
 
 st.title('📈 Forecasting')
+df = st.file_uploader('Import the time series csv file here. Columns must be labeled ds and y. The input to Prophet is always a dataframe with two columns: ds and y. The ds (datestamp) column should be of a format expected by Pandas, ideally YYYY-MM-DD for a date or YYYY-MM-DD HH:MM:SS for a timestamp. The y column must be numeric, and represents the measurement we wish to forecast.', type='csv')
 
 use_defo = st.checkbox('Use example Dataset')
 if use_defo:
     df = 'Riceprice.csv'
 
-df = st.file_uploader('Import the time series csv file here. Columns must be labeled ds and y. The input to Prophet is always a dataframe with two columns: ds and y. The ds (datestamp) column should be of a format expected by Pandas, ideally YYYY-MM-DD for a date or YYYY-MM-DD HH:MM:SS for a timestamp. The y column must be numeric, and represents the measurement we wish to forecast.', type='csv')
-
-if df is not None:
+if df =='use_defo' or 'csv':
     data = pd.read_csv(df)
     data['ds'] = pd.to_datetime(data['ds'],errors='coerce') 
     
